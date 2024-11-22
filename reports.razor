@@ -1,0 +1,41 @@
+@page "/reports"
+@inject IJSRuntime JS
+@inject ILocalStorageService _localStorage
+@inject DialogService DialogService
+@inject HttpClient Http
+@inject IWordService WordService
+
+<button @onclick="GenerateAndDownloadWord">Generar y Descargar Word</button>
+
+@code {
+    private async Task GenerateAndDownloadWord()
+    {
+        var parameters = new Dictionary<string, string>
+        {
+            { "{Nombre}", "Juan Pérez" },
+            { "{Fecha}", DateTime.Now.ToString("dd/MM/yyyy") }
+        };
+
+        // Caching de la plantilla en LocalStorage (mejora el rendimiento si el archivo es reutilizado)
+        var cacheKey = "templateCache";
+        byte[] templateBytes;
+        if (await _localStorage.ContainKeyAsync(cacheKey))
+        {
+            // Usa la versión cacheada si está disponible
+            templateBytes = await _localStorage.GetItemAsync<byte[]>(cacheKey);
+        }
+        else
+        {
+            // Descarga la plantilla y la guarda en LocalStorage para evitar futuras descargas
+            templateBytes = await Http.GetByteArrayAsync("templates/plantilla.docx");
+            await _localStorage.SetItemAsync(cacheKey, templateBytes);
+        }
+
+        // Generar el documento modificado
+        var fileBytes = WordService.GenerateWordDocument(templateBytes, parameters);
+
+        var fileName = "DocumentoGenerado.docx";
+        // Descarga el archivo utilizando el script JavaScript
+        await JS.InvokeVoidAsync("saveAsFile", fileName, Convert.ToBase64String(fileBytes));
+    }
+}
