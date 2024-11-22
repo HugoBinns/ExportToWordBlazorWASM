@@ -1,15 +1,15 @@
 # ExportToWordBlazorWASM
 Función para sobreescribir una plantilla de Microsoft Word desde Blazor WebAssembly.
 
-#Notas
+## Notas
 - Fue utilizado en .NET 8.0
 
-#Librerías utilizadas:
+## Librerías utilizadas:
 - DocumentFormat.OpenXml
 - System.IO
 - Blazored.LocalStorage
 
-#Modo de uso:
+## Modo de uso:
 1. Instalar las librerías:
     - dotnet add package DocumentFormat.OpenXml
     - dotnet add package Blazored.LocalStorage
@@ -30,7 +30,7 @@ Función para sobreescribir una plantilla de Microsoft Word desde Blazor WebAsse
     - @inject HttpClient Http
     - @inject IWordService WordService
 
-#Recomendaciones
+## Recomendaciones
 - El código razor que que se encuentra en el repositorio es un ejemplo para demostrar qué parametros puede recibir la función GenerateWordDocument en el IWordService para que lo usen de guía
 - El archivo de Word recomiendo que tenga la extensión .docx, no lo probé con otras extensiones
 - Creen una carpera dentro de wwwroot para almacenar sus plantillas, en mi caso la llamé templates
