@@ -1,9 +1,9 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using ExpedienteJudicial.Frontend.Services.IServices;
+using ExportToWord.Services.IServices;
 using System.IO;
 
-namespace ExpedienteJudicial.Frontend.Services
+namespace ExportToWord.Services
 {
     public class WordService : IWordService
     {
