@@ -36,3 +36,8 @@ Función para sobreescribir una plantilla de Microsoft Word desde Blazor WebAsse
 - Creen una carpera dentro de wwwroot para almacenar sus plantillas, en mi caso la llamé templates
 - Verifiquen los namespaces ya que los namespaces que están en estos archivos son los de mi proyecto no es recomendable que usen los mismos que los míos
     
+## Apóyanos 💖
+
+Si este proyecto te resulta útil, considera hacer una donación para apoyar su desarrollo continuo. 
+
+[¡Haz una donación a través de PayPal!](https://www.paypal.me/hugobinns)
