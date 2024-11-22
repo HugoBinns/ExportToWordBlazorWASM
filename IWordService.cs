@@ -1,4 +1,4 @@
-namespace ExpedienteJudicial.Frontend.Services.IServices
+namespace ExportToWord.Services.IServices
 {
     public interface IWordService
     {
